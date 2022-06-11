@@ -29,4 +29,8 @@ public class Screen {
     @JsonIgnore
     @OneToOne(mappedBy = "screen")
     private Price price;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "screen_t")
+    private Ticket ticket;
 }

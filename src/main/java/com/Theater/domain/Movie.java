@@ -26,9 +26,7 @@ public class Movie {
     private double ticketingRate;
     private double score;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "movie")
-    private Ticket ticket;
+
 
     @JsonIgnore
     @OneToMany(mappedBy = "member")
