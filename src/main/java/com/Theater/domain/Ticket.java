@@ -20,8 +20,8 @@ public class Ticket {
     private Seat seat;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "HALL_ID")
-    private Hall hall;
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "MOVIE_ID")

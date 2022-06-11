@@ -23,7 +23,5 @@ public class Hall {
     @OneToMany(mappedBy = "hall", cascade = CascadeType.ALL)
     private List<Seat> seats = new ArrayList<>();
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "hall")
-    private Ticket ticket;
+
 }
