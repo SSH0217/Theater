@@ -1,5 +1,6 @@
 package com.Theater.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,5 +21,7 @@ public class Member {
     private boolean isAdmin;
     private String sex;
     private Integer age;
-
+    @JsonIgnore
+    @OneToOne(mappedBy = "member")
+    private Ticket ticket;
 }
