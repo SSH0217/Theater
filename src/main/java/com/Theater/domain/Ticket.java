@@ -24,6 +24,6 @@ public class Ticket {
     private Member member;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "MOVIE_ID")
-    private Movie movie;
+    @JoinColumn(name = "SCREEN_ID")
+    private Screen screen_t;
 }
