@@ -13,7 +13,8 @@ import java.util.List;
 @Getter
 @Setter
 public class Hall {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "HALL_ID")
     private Long id;
     @NotNull

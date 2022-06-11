@@ -13,7 +13,8 @@ import java.util.List;
 @Getter
 @Setter
 public class Movie {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "MOVIE_ID")
     private Long id;
     private String title;
