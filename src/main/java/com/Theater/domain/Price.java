@@ -9,7 +9,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class Price {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "PRICE_ID")
     private Long id;
     private int firstPrice;

@@ -11,7 +11,8 @@ import java.util.Date;
 @Getter
 @Setter
 public class Screen {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "SCREEN_ID")
     private Long id;
     private Date startTime;

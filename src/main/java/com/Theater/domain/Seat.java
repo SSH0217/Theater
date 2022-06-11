@@ -10,7 +10,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class Seat {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "SEAT_ID")
     private Long id;
     private boolean available;
