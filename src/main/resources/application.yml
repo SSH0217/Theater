@@ -1,16 +1,7 @@
-<<<<<<< HEAD
 spring:
-=======
-logging:
-  level:
-    root: info
-spring:
-  messages:
-    basename: errors
   output:
     ansi:
       enabled: always
->>>>>>> 52460bd ([Add] template)
   datasource:
     url: jdbc:h2:tcp://localhost/~/test
     username: sa
@@ -18,27 +9,8 @@ spring:
     driver-class-name: org.h2.Driver
   jpa:
     hibernate:
-<<<<<<< HEAD
       ddl-auto: create
-=======
-      ddl-auto: update
->>>>>>> 52460bd ([Add] template)
     properties:
       hibernate:
         show_sql: true
         format_sql: true
-<<<<<<< HEAD
-
-
-=======
-server:
-  servlet:
-    session:
-      tracking-modes: cookie
-    timeout: 60
-  error:
-    whitelabel:
-      enabled: false
-    include-exception: true
-    include-message: always
->>>>>>> 52460bd ([Add] template)
