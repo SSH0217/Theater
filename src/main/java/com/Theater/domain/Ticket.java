@@ -19,7 +19,7 @@ public class Ticket {
     @JoinColumn(name = "SEAT_ID")
     private Seat seat;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 

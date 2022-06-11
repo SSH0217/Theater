@@ -29,4 +29,8 @@ public class Movie {
     @JsonIgnore
     @OneToOne(mappedBy = "movie")
     private Ticket ticket;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "member")
+    private List<Review> reviews = new ArrayList<>();
 }
