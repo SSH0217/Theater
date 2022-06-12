@@ -14,18 +14,18 @@ import java.util.List;
 public class MovieController {
     private final MovieService movieService;
 
-    @GetMapping("/movies")
-    public String itemList(Model model){
-        List<Movie> movies = movieService.findMovies();
-
-        return ""
-    }
-    @GetMapping("/movie")
-    public String createMovieForm(Model model){
-        Movie movie = movieService.findOneMovie();
-
-        model.addAttribute("movie", movie);
-
-        return "/movie/movie-detail";
-    }
+//    @GetMapping("/movies")
+//    public String itemList(Model model){
+//        List<Movie> movies = movieService.findMovies();
+//
+//        return ""
+//    }
+//    @GetMapping("/movie")
+//    public String createMovieForm(Model model){
+//        Movie movie = movieService.findOneMovie();
+//
+//        model.addAttribute("movie", movie);
+//
+//        return "/movie/movie-detail";
+//    }
 }
