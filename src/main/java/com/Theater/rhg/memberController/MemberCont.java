@@ -44,14 +44,21 @@ public class MemberCont {
         return "member/member_info";
     }
     @GetMapping("/admin")
-    public String createAdminForm(Model model){
-        System.out.println("--------------------controller------------------------");
-        List<Screen> scr= screenService.findScreens();
-        List<ScreenDTO> scrList = scr.stream()
-                .map(m->new ScreenDTO(m))
-                .collect(Collectors.toList());
-        model.addAttribute("Screens",scrList);
-        return "/member/admin_page";
+    public String createAdminForm(HttpServletRequest request,Model model){
+        Member loginMember = (Member) request.getSession().getAttribute("loginMember");
+        if(loginMember.isAdmin()==true) {
+            System.out.println("--------------------controller------------------------");
+            List<Screen> scr = screenService.findScreens();
+            List<ScreenDTO> scrList = scr.stream()
+                    .map(m -> new ScreenDTO(m))
+                    .collect(Collectors.toList());
+            model.addAttribute("Screens", scrList);
+            return "member/admin_page";
+        }
+        else
+        {
+            return "error-page/401";
+        }
     }
     @PostMapping("/admin2")
     public String createAdminForm2(@RequestParam("movieId") Long movieId,

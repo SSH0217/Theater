@@ -8,14 +8,15 @@
 </head>
 <body>
 <section layout:fragment="content" class="main-content">
-    <div th:object="${member}">
-        <div th:text="${member.id}"></div>
+    <div id="register-form">
+    <div class="form-row" th:object="${member}">
+
         <div th:text="${member.loginId}"></div>
         <div th:text="${member.password}"></div>
         <div th:text="${member.socialSecurityNumber}"></div>
         <div th:text="${member.sex}"></div>
     </div>
-    <table>
+    <table class="form-row">
         <thead>
         <tr>
             <th>취소여부</th>
@@ -33,6 +34,7 @@
     </table>
 
     <a href="/admin">관리자</a>
+    </div>
 </section>
 </body>
 
