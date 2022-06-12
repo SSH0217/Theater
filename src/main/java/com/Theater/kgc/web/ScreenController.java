@@ -22,6 +22,7 @@ public class ScreenController {
 
         return "screens/screen-list";
     }
+
 //    @GetMapping("/movie/{sortBy}/{pageNum}")
 //    public String moviePage(@PathVariable("pageNum") int pageNum,
 //                            @PathVariable("sortBy") String sortBy, Model model){

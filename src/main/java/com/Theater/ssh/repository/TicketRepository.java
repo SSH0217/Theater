@@ -1,6 +1,7 @@
 package com.Theater.ssh.repository;
 
 import com.Theater.domain.Ticket;
+import com.Theater.rhg.DTO.TicketDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +13,7 @@ public class TicketRepository {
     @PersistenceContext
     EntityManager em;
 
-    public void book(Ticket ticket){
+    public void book(TicketDTO ticket){
         if(ticket.getId() == null){
             em.persist(ticket);
         }
