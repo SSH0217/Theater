@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>예매</title>
 </head>
 <body>
+<section layout:fragment="content" class="main-content">
+    <h1>예매</h1>
+    <table class="table table-striped table-hover">
 
+        <tbody>
+        <tr th:each="seat : ${seats}">
+            <td>
+                <input type="checkbox" th:text="${seat.id}"
+                    th:each="ticket : ${tickets}" th:if="${ticket.id==${seat.id}}">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
 </body>
 </html>
