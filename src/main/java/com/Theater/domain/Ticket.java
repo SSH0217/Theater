@@ -16,8 +16,7 @@ import javax.persistence.*;
                 @NamedSubgraph(
                         name = "screen_t-subgraph",
                         attributeNodes = {
-                                @NamedAttributeNode("movie"),
-                                @NamedAttributeNode("price")
+                                @NamedAttributeNode("movie")
                         }
                 )
         }
