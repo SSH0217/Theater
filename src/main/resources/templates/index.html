@@ -4,19 +4,18 @@
 <head>
 </head>
 <body>
+<section layout:fragment="content" class="main-content">
+    <h1>무비차트</h1>
+    <div style="height: 595px; display: block;">
+        <ul th:each="screen : ${screens}">
+            <div> <span th:text="${screen.movie.movieGrade}"></span>등급 <strong th:text="${screen.movie.title}"></strong> <span th:text="${screen.movie.genre}"></span>/ <span th:text="${screen.movie.runTime}"></span>분/ <span th:text="${screen.movie.openingDate}"></span> 개봉</div>
+            <div> 2D/ <span th:text="${screen.hall.hallNum}"></span>관 <span th:text="${screen.hall.hallNum}"></span>층/ 총 <span th:text="${20-#lists.size(screen.hall.seats)}"></span>석</div>
+            <ul >
+                <li><a th:href="@{/tickets/{id}(id = ${screen.id})}" th:text="${screen.startTime}"></a></li>
+            </ul>
+        </ul>
+    </div>
 
-<header>
-    <img src="logo.png">
-    <nav>
-        <a href="/login/">로그인</a>
-        <a href="/register/">회원가입</a>
-        <a href="/mypage/">MY CGV</a>
-    </nav>
-</header>
-<nav>
-    <a href="/movie/">영화</a>
-    <a href="/screeningTable/">상영시간표</a>
-</nav>
-
+</section>
 </body>
 </html>

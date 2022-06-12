@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<section layout:fragment="content" class="main-content">
+    <h1>상영시간표</h1>
+    <div style="height: 595px; display: block;">
+        <ul th:each="screen : ${screens}">
+                <div> <span th:text="${screen.movie.movieGrade}"></span>등급 <strong th:text="${screen.movie.title}"></strong> <span th:text="${screen.movie.genre}"></span>/ <span th:text="${screen.movie.runTime}"></span>분/ <span th:text="${screen.movie.openingDate}"></span> 개봉</div>
+                <div> 2D/ <span th:text="${screen.hall.hallNum}"></span>관 <span th:text="${screen.hall.hallNum}"></span>층/ 총 <span th:text="${20-#lists.size(screen.hall.seats)}"></span>석</div>
+                <ul >
+                    <li><a th:href="@{/tickets/{id}(id = ${screen.id})}" th:text="${screen.startTime}"></a></li>
+                </ul>
+        </ul>
+    </div>
+
+</section>
+</body>
+</html>
