@@ -19,7 +19,6 @@
     <div>
         <div th:object="${movie}">
         <form id="register-form" th:action="@{/comment/new}" method="post">
-
                 <div name="movId" th:text="${movie.id}"></div>
                 <div th:text="${movie.title}"></div>
                 <div th:text="${movie.actor}"></div>

@@ -8,7 +8,16 @@
 </head>
 <body>
 <section layout:fragment="content" class="main-content">
-
+<!--    <script>-->
+<!--        let showBtn = function (){-->
+<!--            const target = document.getElementById('hide-button');-->
+<!--            target.hidden = false;-->
+<!--        }-->
+<!--        let hideBtn = function (){-->
+<!--            const target = document.getElementById('hide-button');-->
+<!--            target.hidden = true;-->
+<!--        }-->
+<!--    </script>-->
     <h1>영화</h1>
     <div>
         <form id="search-movie" th:action="@{/movie/search}" method="get">
@@ -39,7 +48,9 @@
         </thead>
         <tbody>
             <tr th:each="movie : ${movies}">
-                <td><img width="180" height="280" th:src="${movie.poster}"></td>
+                    <td>
+                        <img width="180" height="280" th:src="${movie.poster}">
+                    </td>
                 <td><span th:text="${movie.title}"></span></td>
                 <td><span th:text="${movie.actor}"></span></td>
                 <td><span th:text="${movie.genre}"></span></td>
