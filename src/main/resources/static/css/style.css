@@ -101,9 +101,10 @@ footer .company_info_wrap{display:flex; justify-content:space-between; align-ite
 	.company_info .company_info_list dd a{text-decoration:underline}
 
 .main-content{
-   position:relative;
+   position:;
    width:100%;
    z-index:7
+   margin-top: 15px;
 }
 #register-form{
     width: 768px;
