@@ -7,14 +7,15 @@
     <title>MovieList</title>
 </head>
 <body>
-<section layout:fragmet="content" class="main-content">
+<section layout:fragment="content" class="main-content">
 
     <h1>영화</h1>
-    <table class="table table-striped table-hover">
+    <table>
         <tbody>
             <tr th:each="movie : ${movies}">
                 <td><span th:text="${movie.title}"
-                          th:herf="@{{movie/detail/{movieId}(movieId) = ${movie.movieId}"></span></td>
+                          th:herf="@{movie/detail/{id}(id = ${movie.id})}"></span>
+                </td>
 
             </tr>
         </tbody>
