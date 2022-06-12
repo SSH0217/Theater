@@ -8,19 +8,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-//@Service
-//@Transactional
-//@RequiredArgsConstructor
-//public class MovieService {
-//    private final MovieRepository movieRepository;
-//
-//    public List<Movie> findMovies(){
-//        return movieRepository.findALl();
-//    }
-//    public Movie findOneMovie(String title){
-//
-//        Movie movie = movieRepository.findByTitle(title);
-//
-//        return movie;
-//    }
-//}
+@Service
+@Transactional
+@RequiredArgsConstructor
+public class MovieService {
+    private final MovieRepository movieRepository;
+
+    public List<Movie> findMovies(){
+        return movieRepository.findAll();
+    }
+    public Movie findOneMovie(Long id){
+
+        Movie movie = movieRepository.findAllById(id);
+
+        return movie;
+    }
+}
