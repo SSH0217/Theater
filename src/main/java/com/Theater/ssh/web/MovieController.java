@@ -33,7 +33,8 @@ public class MovieController {
         return "movie/movie-list";
     }
     @GetMapping("/movie/{sortBy}/{pageNum}")
-    public String moviePage(@PathVariable("pageNum") int pageNum,
+    public String moviePage( @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember,
+            @PathVariable("pageNum") int pageNum,
                             @PathVariable("sortBy") String sortBy, Model model){
         Page<Movie> movies = movieService.findMoviesPage(pageNum, sortBy);
 
@@ -42,11 +43,12 @@ public class MovieController {
         model.addAttribute("pageNext", movies.hasNext());
         model.addAttribute("pagePre", movies.hasPrevious());
         model.addAttribute("presentSort", sortBy);
+        model.addAttribute("loginMember",loginMember);
 
         return "movie/movie-list";
     }
     @GetMapping("/movie/detail/{id}")
-    public String createMovieForm(@PathVariable("id") Long movieId, Model model){
+    public String createMovieForm(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember,@PathVariable("id") Long movieId, Model model){
         Movie movie = movieService.findOneMovie(movieId);
         List<Review> reviews = reviewService.findReviews(movieId);
         System.out.println("----------------------------------------");
@@ -54,14 +56,17 @@ public class MovieController {
         System.out.println(reviews.size());
         model.addAttribute("movie", movie);
         model.addAttribute("reviews", reviews);
+        model.addAttribute("loginMember",loginMember);
 
         return "movie/movie-detail";
     }
     @GetMapping("/movie/search")
-    public String searchMovie(@RequestParam("question") String quest, Model model){
+    public String searchMovie(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember,@RequestParam("question") String quest, Model model){
         List<Movie> movies = movieService.questionMovie(quest);
 
         model.addAttribute("movies", movies);
+        model.addAttribute("loginMember",loginMember);
+
         return "/movie/search-result";
     }
 }
