@@ -16,6 +16,37 @@
     <div>
 
     </div>
+    <div>
+        <div th:object="${movie}">
+        <form id="register-form" th:action="@{/comment/new}" method="post">
+
+                <div name="movId" th:text="${movie.id}"></div>
+                <div th:text="${movie.title}"></div>
+                <div th:text="${movie.actor}"></div>
+                <div th:text="${movie.movieGrade}"></div>
+                <div th:text="${movie.genre}"></div>
+                <div th:text="${movie.runTime}"></div>
+                <div th:text="${movie.openingDate}"></div>
+                    <div th:text="${movie.ticketingRate}"></div>
+                    <div th:text="${movie.score}"></div>
+            <div class="form-row">
+            <input name="review" type="text" width="50" height="20"/>
+
+            </div>
+            <div class="form-row">
+            <select name="star">
+                <option value="1" text="1">1</option>
+                <option value="2" text="2">2</option>
+                <option value="3" text="3">3</option>
+                <option value="4" text="4">4</option>
+                <option value="5" text="5">5</option>
+            </select>
+            </div>
+            <input type="submit" value="등록"/>
+
+        </form>
+    </div>
+    </div>
 </section>
 </body>
 </html>
