@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!--<html xmlns:th="http://www.thymeleaf.org"-->
-<!--      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"-->
-<!--      layout:decorate="~{layouts/layout.html}">-->
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+
 <head>
     <meta charset="UTF-8">
 </head>
@@ -19,29 +19,29 @@
     <a href="/movie/">영화</a>
     <a href="/screeningTable/">상영시간표</a>
 </nav>
-<!--<div th:object="${member}">-->
-<!--    <div th:text="${member.id}"></div>-->
-<!--    <div th:text="${member.loginId}"></div>-->
-<!--    <div th:text="${member.password}"></div>-->
-<!--    <div th:text="${member.socialSecurityNumber}"></div>-->
-<!--    <div th:text="${member.sex}"></div>-->
-<!--</div>-->
-<!--<table class="table table-striped table-hover">-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>취소여부</th>-->
-<!--        <th>영화 제목</th>-->
-<!--        <th>좌석</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr th:each="ticket : ${Tickets}">-->
-<!--        <td><span th:text="${ticket.isCanceled}"></span></td>-->
-<!--        <td><span th:text="${ticket.Movie}"></span></td>-->
-<!--        <td><span th:text="${ticket.Seat}"></span></td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->
+<div th:object="${member}">
+    <div th:text="${member.id}"></div>
+    <div th:text="${member.loginId}"></div>
+    <div th:text="${member.password}"></div>
+    <div th:text="${member.socialSecurityNumber}"></div>
+    <div th:text="${member.sex}"></div>
+</div>
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>취소여부</th>
+        <th>영화 제목</th>
+        <th>좌석</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ticket : ${Tickets}">
+        <td><span th:text="${ticket.isCanceled}"></span></td>
+        <td><span th:text="${ticket.Movie}"></span></td>
+        <td><span th:text="${ticket.Seat}"></span></td>
+    </tr>
+    </tbody>
+</table>
 
 <a href="/admin/">관리자</a>
 </body>
