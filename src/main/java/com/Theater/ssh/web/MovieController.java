@@ -4,6 +4,7 @@ import com.Theater.domain.Member;
 import com.Theater.domain.Movie;
 import com.Theater.domain.Review;
 import com.Theater.kgc.web.SessionConst;
+import com.Theater.ssh.DTO.QuestionDTO;
 import com.Theater.ssh.service.MovieService;
 import com.Theater.ssh.service.ReviewService;
 import lombok.AllArgsConstructor;
@@ -13,7 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @AllArgsConstructor
@@ -42,7 +45,6 @@ public class MovieController {
 
         return "movie/movie-list";
     }
-
     @GetMapping("/movie/detail/{id}")
     public String createMovieForm(@PathVariable("id") Long movieId, Model model){
         Movie movie = movieService.findOneMovie(movieId);
@@ -51,5 +53,12 @@ public class MovieController {
         model.addAttribute("reviews", reviews);
 
         return "movie/movie-detail";
+    }
+    @GetMapping("/movie/search")
+    public String searchMovie(@RequestParam("question") String quest, Model model){
+        List<Movie> movies = movieService.questionMovie(quest);
+
+        model.addAttribute("movies", movies);
+        return "/movie/search-result";
     }
 }
