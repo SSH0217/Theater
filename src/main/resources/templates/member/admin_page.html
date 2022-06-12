@@ -8,18 +8,7 @@
 
 </head>
 <body>
-<header>
-    <img src="logo.png">
-    <nav>
-        <a href="/login/">로그아웃</a>
-        <a href="/register/">회원가입</a>
-        <a href="/mypage">MY CGV</a>
-    </nav>
-</header>
-<nav>
-    <a href="/movie/">영화</a>
-    <a href="/screeningTable/">상영시간표</a>
-</nav>
+<section layout:fragment="content" class="main-content">
 
     <table class="table table-striped table-hover">
         <thead>
@@ -34,7 +23,7 @@
         <tbody>
         <tr th:each="screen : ${Screens}">
             <form id="register-form" th:action="@{/admin2}" method="post">
-            <td><input type="radio" name="movieId" th:value="${screen.id}" th:field="*{id}"></td>
+            <td><input type="radio" name="movieId" th:value="${screen.id}"></td>
             <td><span th:text="${screen.movie.title}"></span></td>
             <td><span th:text="${screen.start}"></span></td>
             <td><span th:text="${screen.end}"></span></td>
@@ -42,14 +31,14 @@
                 <td>
                 <div th:if="${screen.isDose}==true">
                     <label>정책: </label>
-                    <select name="policy" th:field="*{Dosed}" onchange="myFunction()">
+                    <select name="policy">
                         <option value="true" text="정액할인"selected>정액할인</option>
                         <option value="false" text="정률할인">정률할인</option>
                     </select>
                 </div>
                 <div th:if="${screen.isDose}==false">
                     <label>정책: </label>
-                    <select name="policy" onchange="myFunction()">
+                    <select name="policy">
                         <option value="true" text="정액할인">정액할인</option>
                         <option value="false" text="정률할인" selected>정률할인</option>
                     </select>
@@ -58,7 +47,7 @@
                 <td>
                 <div>
                     <label id="demo"> </label>
-                    <input id="demo1" type="text" th:value="${screen.policyPrice}" name="amount"/>
+                    <input id="demo1" type="text" th:value="${screen.policyPrice}" name="amount" readonly/>
                 </div>
                 </td>
                 <td>
@@ -69,18 +58,7 @@
         </tbody>
     </table>
 
-<script>
-function myFunction() {
-  var x = document.getElementByName("policy").value;
-  if(x=='true')
-  {
-  document.getElementById("demo").innerHTML = "정액할인";
-  }
-  else{
-  document.getElementById("demo").innerHTML = "정률할인";
-  }
-}
-  </script>
+</section>
 </body>
 
 </html>
