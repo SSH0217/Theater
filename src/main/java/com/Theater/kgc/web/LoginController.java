@@ -41,7 +41,8 @@ public class LoginController {
     @PostMapping("/login")
     public  String login(@Validated @ModelAttribute LoginForm loginForm,
                          BindingResult bindingResult,
-                         HttpServletRequest request){
+                         HttpServletRequest request,
+                         @RequestParam(defaultValue = "/") String redirectURL){
 //        if(bindingResult.hasErrors()){
 //            return "login/login-Form";
 //        }
@@ -55,7 +56,9 @@ public class LoginController {
         HttpSession session = request.getSession();
         session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
         System.out.println("로그인! : "+loginMember.getLoginId());
-        return "redirect:/";
+        System.out.println("redirectURL = " + redirectURL);
+
+        return "redirect:" + redirectURL;
     }
 
     @GetMapping("/logout")
