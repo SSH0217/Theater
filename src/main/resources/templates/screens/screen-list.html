@@ -8,29 +8,14 @@
 <body>
 <section layout:fragment="content" class="main-content">
     <h1>상영시간표</h1>
-    <div class="step step1" style="height: 595px; display: block;">
-        <ul>
-            <li th:each="movie : ${movies}">
-                <a onclick="return false;" th:herf="@{movie/detail/{id}(id = ${movie.id})}">
-                    <span th:text="${movie.title}"></span>
-                </a>
-            </li>
+    <div style="height: 595px; display: block;">
+        <ul th:each="screen : ${screens}">
+                <div> <span th:text="${screen.movie.movieGrade}"></span>등급 <strong th:text="${screen.movie.title}"></strong> <span th:text="${screen.movie.genre}"></span>/ <span th:text="${screen.movie.runTime}"></span>분/ <span th:text="${screen.movie.openingDate}"></span> 개봉</div>
+                <div> 2D/ <span th:text="${screen.hall.hallNum}"></span>관 <span th:text="${screen.hall.hallNum}"></span>층/ 총 <span th:text="${20-#lists.size(screen.hall.seats)}"></span>석</div>
+                <ul >
+                    <li><a th:href="@{/tickets/{id}(id = ${screen.id})}" th:text="${screen.startTime}"></a></li>
+                </ul>
         </ul>
-    </div>
-    <!-- TIME 섹션 -->
-    <div class="section section-time">
-        <div class="col-head" id="skip_time_list">
-            <h3 class="sreader">시간</h3>
-            <a href="#" class="skip_to_something"
-               onclick="skipToSomething('tnb_step_btn_right');return false;">시간선택 건너뛰기</a>
-        </div>
-        <div class="col-body" style="height: 560px;">
-            <!-- 시간선택 -->
-            <div class="time-option">
-                <span class="morning">조조</span><span class="night">심야</span>
-            </div>
-            <div class="placeholder">영화, 극장, 날짜를 선택해주세요.</div>
-        </div>
     </div>
 
 </section>
