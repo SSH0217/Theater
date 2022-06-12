@@ -2,11 +2,9 @@ package com.Theater.rhg.Service;
 
 import com.Theater.domain.*;
 import com.Theater.rhg.DTO.TicketDTO;
-import com.Theater.rhg.Repository.CustomizedScreenRepositoryImpl;
-import com.Theater.rhg.Repository.CustomizedTicketRepositoryImpl;
-import com.Theater.rhg.Repository.MemberRepo;
-import com.Theater.rhg.Repository.ReviewRepo;
+import com.Theater.rhg.Repository.*;
 import com.Theater.ssh.repository.MovieRepository;
+import com.Theater.ssh.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +18,8 @@ public class Service {
     private final CustomizedTicketRepositoryImpl customizedTicketRepository;
     private final ReviewRepo reviewRepo;
     private final MovieRepository movieRepository;
-
+    private final ReviewRepository reviewRepository;
+    private final CustomizedReviewRepositoryImpl customizedReviewRepository;
     public Member findMem(String id){
         System.out.println("--------------------service------------------------");
         return memberRepo.findOne(id);
@@ -42,5 +41,26 @@ public class Service {
         Movie m=movieRepository.findAllById(movie);
         review.setMovie(m);
         reviewRepo.save(review);
+        List<Review> rList=reviewRepository.findAllByMovieId(movie);
+        double sum=0;
+        double num=0;
+        for(int i=0;i<rList.size();i++)
+        {
+            if(rList.get(i).getMovie().getId()==movie)
+            {
+                sum=sum+rList.get(i).getGrade();
+                num=num+1;
+            }
+        }
+        double result=sum/num;
+        m.setScore(result);
+        reviewRepo.saveM(m);
+
+    }
+    public void IlikeComment(Long id){
+        Review review=customizedReviewRepository.findWithReviewJPQL2(id);
+        review.setMovieLike(review.getMovieLike()+1);
+        reviewRepo.save(review);
+
     }
 }

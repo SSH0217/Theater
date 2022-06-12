@@ -30,4 +30,13 @@ public class RmovieController {
             return "redirect:/";
 
     }
+    @PostMapping("/comment/like")
+    public String createAdminForm3(@RequestParam("revID") Long revID){
+        System.out.println("--------------------controller------------------------");
+
+        System.out.println(revID);
+        service.IlikeComment(revID);
+        return "redirect:/";
+
+    }
 }
