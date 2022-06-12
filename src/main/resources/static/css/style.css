@@ -103,7 +103,7 @@ footer .company_info_wrap{display:flex; justify-content:space-between; align-ite
 .main-content{
    position:relative;
    width:100%;
-   margin-top: 15px;
+   padding-top: 15px;
 }
 #register-form{
     width: 768px;
