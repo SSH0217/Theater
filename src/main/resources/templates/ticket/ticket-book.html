@@ -9,17 +9,13 @@
 <body>
 <section layout:fragment="content" class="main-content">
     <h1>예매</h1>
-    <table class="table table-striped table-hover">
-
-        <tbody>
-        <tr th:each="seat : ${seats}">
-            <td>
-                <input type="checkbox" th:text="${seat.id}"
-                    th:each="ticket : ${tickets}" th:if="${ticket.id==${seat.id}}">
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <form id="register-form" th:action="@{/ticket/book}" th:object="${ticket}" method="post">
+        <div class="form-row">
+            <label>이름: </label> <input type="text" th:field="${member.name}" autofocus="autofocus" placeholder="이름"/>
+        </div>
+            <input type="submit" value="예매" />
+        </div>
+    </form>
 </section>
 </body>
 </html>

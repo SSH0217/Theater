@@ -1,6 +1,7 @@
 package com.Theater.ssh.service;
 
 import com.Theater.domain.Ticket;
+import com.Theater.rhg.DTO.TicketDTO;
 import com.Theater.ssh.repository.TicketRepository;
 import com.Theater.ssh.repository.TicketRepositoryCustom;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,7 @@ public class TicketService {
     private final TicketRepository ticketRepository;
     private final TicketRepositoryCustom ticketRepositoryCustom;
 
-    public void bookService(Ticket ticket){
+    public void bookService(TicketDTO ticket){
         ticketRepository.book(ticket);
     }
 
