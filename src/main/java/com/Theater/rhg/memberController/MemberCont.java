@@ -8,6 +8,7 @@ import com.Theater.rhg.DTO.TicketDTO;
 import com.Theater.rhg.Service.ScreenService;
 import com.Theater.rhg.Service.Service;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.support.HttpRequestHandlerServlet;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,17 +29,17 @@ public class MemberCont {
     private final Service memberSer;
     private final ScreenService screenService;
     @GetMapping("/mypage")
-    public String createForm(Model model){
+    public String createForm(HttpServletRequest request, Model model){
         System.out.println("--------------------controller------------------------");
-        Member member=memberSer.findMem("asd");
+        Member loginMember = (Member) request.getSession().getAttribute("loginMember");
 
-        List<Ticket> mem= memberSer.findMembers(member.getId());
+        List<Ticket> mem= memberSer.findMembers(loginMember.getId());
         List<TicketDTO> ticketDTOList = mem.stream()
                 .map(m->new TicketDTO(m))
                 .collect(Collectors.toList());
-        model.addAttribute("member",member);
+        model.addAttribute("member",loginMember);
         model.addAttribute("Tickets",ticketDTOList);
-        return "/member/member_info";
+        return "member/member_info";
     }
     @GetMapping("/admin")
     public String createAdminForm(Model model){
