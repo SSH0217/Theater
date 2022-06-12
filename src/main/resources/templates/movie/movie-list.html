@@ -10,6 +10,15 @@
 <section layout:fragment="content" class="main-content">
 
     <h1>영화</h1>
+    <h1>영화</h1>
+    <h1>영화</h1>
+    <div style="text-align:right">
+        <select name="sortSelect">
+            <option th:value="'ticketingRate'">예매율순</option>
+            <option th:value="'score'">평점순</option>
+        </select>
+        <a>버튼</a>
+    </div>
     <table class="table table-striped table-hover">
         <tbody>
             <tr th:each="movie : ${movies}">
@@ -30,12 +39,6 @@
            th:if="${pageNext==true}"
            th:href="@{/movie/{sortBy}/{pageNum}(pageNum= ${presentNum+1}, sortBy = ${presentSort})}">다음
         </a>
-    </div>
-    <div>
-        <select name="sort">
-            <option th:value="'ticketingRate'">예매율순</option>
-            <option th:value="'score'">평점순</option>
-        </select>
     </div>
 </section>
 </body>
