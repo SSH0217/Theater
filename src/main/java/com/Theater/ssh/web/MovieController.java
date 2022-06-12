@@ -49,6 +49,9 @@ public class MovieController {
     public String createMovieForm(@PathVariable("id") Long movieId, Model model){
         Movie movie = movieService.findOneMovie(movieId);
         List<Review> reviews = reviewService.findReviews(movieId);
+        System.out.println("----------------------------------------");
+        System.out.println(movie.getId());
+        System.out.println(reviews.size());
         model.addAttribute("movie", movie);
         model.addAttribute("reviews", reviews);
 
