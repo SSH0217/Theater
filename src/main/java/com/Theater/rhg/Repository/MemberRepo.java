@@ -1,6 +1,7 @@
 package com.Theater.rhg.Repository;
 
 import com.Theater.domain.Member;
+import com.Theater.domain.Screen;
 import com.Theater.domain.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,11 +20,6 @@ public class MemberRepo implements MemberRepoInte {
                 .setParameter("id", id)
                 .getSingleResult();
     }
-//    @Override
-//    public List<Ticket> findTicketList(int id){
-//        System.out.println("--------------------repository------------------------");
-//        return em.createQuery("select t from Ticket t where m.loginId=:id", Ticket.class)
-//                .setParameter("id", id)
-//                .getResultList();
-//    }
+
+
 }
