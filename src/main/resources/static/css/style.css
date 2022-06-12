@@ -64,26 +64,6 @@
 				.nav_overMenu dd a{font-weight:400; font-size:14px; color:#666; line-height:2.143em}
 				.nav_overMenu dd a.arrowR:after{content:''; display:inline-flex; align-self:center; width:5px; height:9px; margin-left:4px; background:transparent url('./../images/common/ico/arrowR_5x9.png') center/5px 9px scroll no-repeat}
 
-			.totalSearch_wrap{display:inline-flex; position:absolute; right:0; top:7px; padding:0 36px 0 10px}
-			.totalSearch_wrap:before{content:''; position:absolute; left:0; top:2px; width:1px; height:20px; background-color:#cacaca}
-			.totalSearch_wrap:after{content:''; position:absolute; right:0; top:2px; width:1px; height:20px; background-color:#cacaca}
-			.totalSearch_wrap label{display:block}
-			.totalSearch_wrap label input[type="text"]{width:180px; height:auto; padding:0 0 0 7px; font-size:16px; color:#222; line-height:1.500em; border:none}
-			.totalSearch_wrap .btn_totalSearch{display:block; position:absolute; right:10px; top:-1px; ; width:26px; height:26px; font-size:0; line-height:0; background:transparent url('./../images/common/ico/search.png') center center/26px scroll no-repeat}
-
-			.totalSearch_wrap.active .totalSearchAutocomplete_wrap{display:block}
-
-
-
-			.totalSearchAutocomplete_wrap{display:none; position:absolute; left:0; top:43px; width:100%; min-width:238px; background-color:#fff; border:1px solid #e1e1e1; border-radius:5px; box-shadow:0 2px 9px 0 rgba(0, 0, 0, 0.1)}
-				.totalSearchAutocomplete_list{padding:16px 22px; border-bottom:1px solid #f4f4f4}
-				.totalSearchAutocomplete_list dt{font-weight:500; font-size:16px; color:#222; line-height:1.500em}
-				.totalSearchAutocomplete_list dt + dd{margin-top:5px}
-				.totalSearchAutocomplete_list dd a{font-size:14px; color:#222; line-height:2.214em}
-				.totalSearchAutocomplete_list dd a strong{font-weight:400; color:#fb4357}
-
-				.btn_totalSearchAutocomplete_close{float:right; margin:4px 13px 9px; padding-right:15px; font-size:12px; color:#666; line-height:1.417em; background:transparent url('./../images/common/btn/autocompleteClose.png') right center/11px scroll no-repeat}
-
 		.nav.active .nav_overMenu{display:block}
 
 		.nav.fixed{position:fixed; top:0px; min-width:1040px; padding:10px 0}

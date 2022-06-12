@@ -28,7 +28,7 @@ public class LoginController {
             return "layouts/layout";
         }
 
-        model.addAttribute("member",loginMember);
+        model.addAttribute("loginMember",loginMember);
 
         return "layouts/layout";
     }
