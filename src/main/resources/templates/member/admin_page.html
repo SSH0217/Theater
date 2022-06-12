@@ -33,7 +33,7 @@
 <!--        </thead>-->
 <!--        <tbody>-->
 <!--        <tr th:each="screen : ${Screens}">-->
-<!--            <td><input type="radio" name="movieId" th:value="${screen}"></td>-->
+<!--            <td><input type="radio" name="movieId" th:value="${screen.id}"></td>-->
 <!--            <td><span th:text="${screen.movie}"></span></td>-->
 <!--            <td><span th:text="${screen.start}"></span></td>-->
 <!--            <td><span th:text="${screen.end}"></span></td>-->
@@ -51,30 +51,30 @@
 <!--    </div>-->
 <!--    <div class="form-row">-->
 <!--        <label id="demo"> </label>-->
-<!--        <input id="demo1" type="text" name="amount"/>-->
+<!--        <input id="demo1" type="text" value="10" name="amount"/>-->
 <!--    </div>-->
 <!--    <div class="form-row">-->
-<!--        <input type="submit" value="등록" />-->
+<!--        <input type="submit" value="등록"/>-->
 <!--    </div>-->
 <!--</form>-->
-<!--<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>-->
-<!--<script>-->
-<!--&lt;!&ndash;      $( document ).ready( function() {&ndash;&gt;-->
-<!--&lt;!&ndash;        $( 'select[name="policy"]' ).change( function() {&ndash;&gt;-->
-<!--&lt;!&ndash;          var list =document &ndash;&gt;-->
-<!--&lt;!&ndash;        } );&ndash;&gt;-->
-<!--&lt;!&ndash;      } );&ndash;&gt;-->
-<!--function myFunction() {-->
-<!--  var x = document.getElementById("mySelect").value;-->
-<!--  if(x=='true')-->
-<!--  {-->
-<!--  document.getElementById("demo").innerHTML = "정액할인";-->
-<!--  }-->
-<!--  else{-->
-<!--  document.getElementById("demo").innerHTML = "정률할인";-->
-<!--  }-->
-<!--}-->
-<!--    </script>-->
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+<!--      $( document ).ready( function() {-->
+<!--        $( 'select[name="policy"]' ).change( function() {-->
+<!--          var list =document -->
+<!--        } );-->
+<!--      } );-->
+function myFunction() {
+  var x = document.getElementById("mySelect").value;
+  if(x=='true')
+  {
+  document.getElementById("demo").innerHTML = "정액할인";
+  }
+  else{
+  document.getElementById("demo").innerHTML = "정률할인";
+  }
+}
+    </script>
 </body>
 
 </html>

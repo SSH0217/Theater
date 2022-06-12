@@ -10,12 +10,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-@NamedEntityGraph(
-        name = "price.graph",
-        attributeNodes = {
-                @NamedAttributeNode("price"),
-        }
-)
+
 @Entity
 @Getter
 @Setter
@@ -27,7 +22,10 @@ public class Screen {
     private Long id;
     private Date startTime;
     private Date endTime;
-
+    private int firstPrice;
+    //정량이면 true, 정률이면 false
+    private boolean isDose;
+    private int policyPrice;
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "MOVIE_ID")
     private Movie movie;
@@ -36,9 +34,6 @@ public class Screen {
     @JoinColumn(name = "HALL_ID")
     private Hall hall;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "screen")
-    private Price price;
 
 //    @JsonIgnore
 //    @OneToMany(mappedBy = "screen_t")

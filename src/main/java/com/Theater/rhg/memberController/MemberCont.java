@@ -1,7 +1,6 @@
 package com.Theater.rhg.memberController;
 
 import com.Theater.domain.Member;
-import com.Theater.domain.Price;
 import com.Theater.domain.Screen;
 import com.Theater.domain.Ticket;
 import com.Theater.rhg.DTO.ScreenDTO;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,10 +24,10 @@ public class MemberCont {
     private final ScreenService screenService;
     @GetMapping("/mypage")
     public String createForm(Model model){
-        System.out.println("--------------------controller------------------------");
-        Member member=memberSer.findMem("asd");
-
-        List<Ticket> mem= memberSer.findMembers(member.getId());
+//        System.out.println("--------------------controller------------------------");
+//        Member member=memberSer.findMem("asd");
+//
+//        List<Ticket> mem= memberSer.findMembers(member.getId());
 //        List<TicketDTO> ticketDTOList = mem.stream()
 //                .map(m->new TicketDTO(m))
 //                .collect(Collectors.toList());
@@ -39,7 +37,7 @@ public class MemberCont {
     }
     @GetMapping("/admin")
     public String createAdminForm(Model model){
-        System.out.println("--------------------controller------------------------");
+//        System.out.println("--------------------controller------------------------");
 //        List<Screen> scr= screenService.findScreens();
 //        List<ScreenDTO> scrList = scr.stream()
 //                .map(m->new ScreenDTO(m))
@@ -47,18 +45,16 @@ public class MemberCont {
 //        model.addAttribute("Screens",scrList);
         return "/member/admin_page";
     }
-//    @PostMapping("/adminPage2")
-//    public String createAdminForm2(@RequestParam("movieId") ScreenDTO movieId,
-//                                   @RequestParam("policy") boolean policy,
-//                                   @RequestParam("amount") int amount){
-//        System.out.println("--------------------controller------------------------");
-////        Price price=new Price();
-////        price.setScreen();
-////        price.setDose(policy);
-////        price.setPolicyPrice(amount);
-//        System.out.println(movieId);
-//        System.out.println(policy);
-//        System.out.println(amount);
-//        return "redirect:/admin";
-//    }
+    @PostMapping("/adminPage2")
+    public String createAdminForm2(@RequestParam("movieId") Long movieId,
+                                   @RequestParam("policy") boolean policy,
+                                   @RequestParam("amount") int amount){
+        System.out.println("--------------------controller------------------------");
+
+        System.out.println(movieId);
+        System.out.println(policy);
+        System.out.println(amount);
+
+        return "redirect:/admin";
+    }
 }
