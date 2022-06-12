@@ -10,18 +10,26 @@
 <section layout:fragment="content" class="main-content">
 
     <h1>영화</h1>
-    <table>
+    <table class="table table-striped table-hover">
         <tbody>
             <tr th:each="movie : ${movies}">
                 <td><span th:text="${movie.title}"></span>
                 </td>
-                <td><a th:herf="@{movie/detail/{id}(id = ${movie.id})}">상세정보</a></td>
-
+                <td><a class="btn-primary btn-sm"
+                        th:href="@{/movie/detail/{id}(id = ${movie.id})}">상세정보</a>
+                </td>
             </tr>
         </tbody>
-
     </table>
+    <div style="text-align:center">
+        <a class="btn-primary btn-sm"
+           th:if="${pagePre==true}"
+           th:href="@{/movie/ticketingRate/{pageNum}(pageNum= ${presentNum-1})}">이전</a>
+        <a class="btn-primary btn-sm"
+           th:if="${pageNext==true}"
+           th:href="@{/movie/ticketingRate/{pageNum}(pageNum= ${presentNum+1})}">다음</a>
 
+    </div>
 </section>
 </body>
 </html>
