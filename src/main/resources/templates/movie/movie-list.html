@@ -24,11 +24,18 @@
     <div style="text-align:center">
         <a class="btn-primary btn-sm"
            th:if="${pagePre==true}"
-           th:href="@{/movie/ticketingRate/{pageNum}(pageNum= ${presentNum-1})}">이전</a>
+           th:href="@{/movie/{sortBy}/{pageNum}(pageNum= ${presentNum-1}, sortBy = ${presentSort})}">이전
+        </a>
         <a class="btn-primary btn-sm"
            th:if="${pageNext==true}"
-           th:href="@{/movie/ticketingRate/{pageNum}(pageNum= ${presentNum+1})}">다음</a>
-
+           th:href="@{/movie/{sortBy}/{pageNum}(pageNum= ${presentNum+1}, sortBy = ${presentSort})}">다음
+        </a>
+    </div>
+    <div>
+        <select name="sort">
+            <option th:value="'ticketingRate'">예매율순</option>
+            <option th:value="'score''">평점순</option>
+        </select>
     </div>
 </section>
 </body>

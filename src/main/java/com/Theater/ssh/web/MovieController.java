@@ -40,6 +40,7 @@ public class MovieController {
         model.addAttribute("presentNum", pageNum);
         model.addAttribute("pageNext", movies.hasNext());
         model.addAttribute("pagePre", movies.hasPrevious());
+        model.addAttribute("presentSort", sortBy);
 
         return "movie/movie-list";
     }
