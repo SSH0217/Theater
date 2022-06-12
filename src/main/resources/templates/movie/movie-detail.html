@@ -19,7 +19,9 @@
     <div>
         <div th:object="${movie}">
         <form id="register-form" th:action="@{/comment/new}" method="post">
-                <div name="movId" th:text="${movie.id}"></div>
+            <div class="form-row">
+            <input name="movId" style="display:none;" type="text" th:value="${movie.id}">
+                <img width="180" height="280" th:src="${movie.poster}">
                 <div th:text="${movie.title}"></div>
                 <div th:text="${movie.actor}"></div>
                 <div th:text="${movie.movieGrade}"></div>
@@ -28,6 +30,27 @@
                 <div th:text="${movie.openingDate}"></div>
                     <div th:text="${movie.ticketingRate}"></div>
                     <div th:text="${movie.score}"></div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>내용</th>
+                    <th>평점</th>
+                    <th>작성자</th>
+                    <th>좋아요</th>
+
+                </tr>
+
+                </thead>
+                <tbody>
+                <tr th:each="review : ${reviews}">
+                        <td><span th:text="${review.contents}"></span></td>
+                        <td><span th:text="${review.grade}"></span></td>
+                        <td><span th:text="${review.member.loginId}"></span></td>
+                        <td><span th:text="${review.movieLike}"></span></td>
+                </tr>
+                </tbody>
+            </table>
             <div class="form-row">
             <input name="review" type="text" width="50" height="20"/>
 
