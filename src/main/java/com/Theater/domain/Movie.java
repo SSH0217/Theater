@@ -21,6 +21,7 @@ public class Movie {
     @Column(name = "MOVIE_ID")
     private Long id;
     private String title;
+    private String poster;
     private String actor;
     private String movieGrade;
     private String genre;

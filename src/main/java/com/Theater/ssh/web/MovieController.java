@@ -5,6 +5,7 @@ import com.Theater.domain.Review;
 import com.Theater.ssh.service.MovieService;
 import com.Theater.ssh.service.ReviewService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,20 +20,29 @@ public class MovieController {
     private final ReviewService reviewService;
 
     @GetMapping("/movie")
-    public String itemList(Model model){
+    public String movieList(Model model){
         List<Movie> movies = movieService.findMovies();
 
         model.addAttribute("movies", movies);
 
         return "movie/movie-list";
     }
-    @GetMapping("/movie/detail/{movieId}")
-    public String createMovieForm(@PathVariable("movieId") Long movieId, Model model){
+    @GetMapping("/movies")
+    public String moviePage(Model model){
+        Page<Movie> movies = movieService.findMoviesPage(0);
+
+        model.addAttribute("movies", movies);
+        model.addAttribute("pageNum", movies.stream().count());
+
+        return "movie/movie-list";
+    }
+    @GetMapping("/movie/detail/{id}")
+    public String createMovieForm(@PathVariable("id") Long movieId, Model model){
         Movie movie = movieService.findOneMovie(movieId);
         List<Review> reviews = reviewService.findReviews(movieId);
         model.addAttribute("movie", movie);
         model.addAttribute("reviews", reviews);
 
-        return "/movie/movie-detail";
+        return "movie/movie-detail";
     }
 }

@@ -7,6 +7,7 @@ import java.util.Date;
 public class MovieDTO {
     private Long id;
     private String title;
+    private String poster;
     private String actor;
     private String movieGrade;
     private String genre;
@@ -18,6 +19,7 @@ public class MovieDTO {
     public MovieDTO(Movie movie) {
         this.id = movie.getId();
         this.title = movie.getTitle();
+        this.poster = movie.getPoster();
         this.actor = movie.getActor();
         this.movieGrade = movie.getMovieGrade();
         this.genre = movie.getGenre();
