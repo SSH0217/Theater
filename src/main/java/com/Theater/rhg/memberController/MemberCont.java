@@ -3,6 +3,8 @@ package com.Theater.rhg.memberController;
 import com.Theater.domain.Member;
 import com.Theater.domain.Screen;
 import com.Theater.domain.Ticket;
+import com.Theater.rhg.DTO.AmountDTO;
+import com.Theater.rhg.DTO.PercentDTO;
 import com.Theater.rhg.DTO.ScreenDTO;
 import com.Theater.rhg.DTO.TicketDTO;
 import com.Theater.rhg.Service.ScreenService;
@@ -54,13 +56,54 @@ public class MemberCont {
     @PostMapping("/admin2")
     public String createAdminForm2(@RequestParam("movieId") Long movieId,
                                    @RequestParam("policy") boolean policy,
-                                   @RequestParam int amount){
+                                   @RequestParam int amount,Model model){
         System.out.println("--------------------controller------------------------");
+    if (policy==true)
+    {
+        AmountDTO amountDTO=new AmountDTO();
+        amountDTO.setAmount(amount);
+        amountDTO.setId(movieId);
+        amountDTO.setDosed(policy);
+        model.addAttribute("AmountDTO",amountDTO);
+        return "member/inputData";
+    }else
+    {
+        PercentDTO percentDTO=new PercentDTO();
+        percentDTO.setPercent(amount);
+        percentDTO.setId(movieId);
+        percentDTO.setDosed(policy);
+        model.addAttribute("PercentDTO",percentDTO);
+        return "member/inputPercent";
+    }
 
-        System.out.println(movieId);
-        System.out.println(policy);
-        System.out.println(amount);
-        screenService.updatePolicy(movieId,policy,amount);
+    }
+    @PostMapping("/admin/policy1")
+    public String create2(@Validated @ModelAttribute AmountDTO amountDTO, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            //log.info("errors = {} ", bindingResult);
+            System.out.println("failed");
+            return "redirect:/admin";
+        }
+        System.out.println(amountDTO.getId());
+        System.out.println(amountDTO.isDosed());
+        System.out.println(amountDTO.getAmount());
+        screenService.updatePolicy(amountDTO.getId(),amountDTO.isDosed(),amountDTO.getAmount());
+
         return "redirect:/admin";
     }
+    @PostMapping("/admin/policy2")
+    public String create3(@Validated @ModelAttribute PercentDTO percentDTO, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            //log.info("errors = {} ", bindingResult);
+            System.out.println("failed");
+            return "redirect:/admin";
+        }
+        System.out.println(percentDTO.getId());
+        System.out.println(percentDTO.isDosed());
+        System.out.println(percentDTO.getPercent());
+        screenService.updatePolicy(percentDTO.getId(),percentDTO.isDosed(),percentDTO.getPercent());
+
+        return "redirect:/admin";
+    }
+
 }
