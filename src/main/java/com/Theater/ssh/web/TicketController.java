@@ -28,17 +28,18 @@ public class TicketController {
 
     @GetMapping("/tickets/{id}")
     public String bookPage(@PathVariable("id") Long screenId, Model model){
-        TicketDTO ticket = new TicketDTO();
+        System.out.println("====================여기여기");
+        Ticket ticket = new Ticket();
         model.addAttribute("ticket", ticket);
         return "ticket/ticket-book";
     }
 
     @PostMapping("/ticket/book")
     public String addTicket(@ModelAttribute Ticket form){
-        TicketDTO ticket = new TicketDTO();
-        ticket.setMovie(form.getScreen_t().getMovie().getTitle());
+        Ticket ticket = new Ticket();
+        ticket.setScreen_t(form.getScreen_t());
         ticket.setCanceled(false);
-        ticket.setSeat(form.getSeat().getId());
+        ticket.setSeat(form.getSeat());
         ticketService.bookService(ticket);
         return "redirect:/";
     }

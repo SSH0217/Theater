@@ -11,7 +11,8 @@
     <h1>예매</h1>
     <form id="register-form" th:action="@{/ticket/book}" th:object="${ticket}" method="post">
         <div class="form-row">
-            <label>이름: </label> <input type="text" th:field="${member.name}" autofocus="autofocus" placeholder="이름"/>
+            <label>좌석번호: </label> <input type="text" th:field="${ticket.seat.id}" autofocus="autofocus" placeholder="좌석번호"/>
+            <label>상영정보: </label> <input type="text" th:field="${ticket.screen_t.id}" autofocus="autofocus" placeholder="상영정보"/>
         </div>
             <input type="submit" value="예매" />
         </div>

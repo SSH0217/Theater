@@ -13,7 +13,7 @@ public class TicketRepository {
     @PersistenceContext
     EntityManager em;
 
-    public void book(TicketDTO ticket){
+    public void book(Ticket ticket){
         if(ticket.getId() == null){
             em.persist(ticket);
         }

@@ -17,7 +17,7 @@ public class TicketService {
     private final TicketRepository ticketRepository;
     private final TicketRepositoryCustom ticketRepositoryCustom;
 
-    public void bookService(TicketDTO ticket){
+    public void bookService(Ticket ticket){
         ticketRepository.book(ticket);
     }
 
